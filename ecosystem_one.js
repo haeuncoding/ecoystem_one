@@ -41,8 +41,13 @@ const sketch = ({context, width, height}) => {
       bebe.update();
       if (bebe instanceof Carnivore) {
         bebe.draw(context, 'carnivore');
+        bebe.getHungry()
+
       } else if (bebe instanceof Herbivore) {
         bebe.draw(context, 'herbivore')
+        bebe.getHungry()
+      } else if (bebe instanceof Flora) {
+        bebe.draw(context, 'flora')
       } else {
         bebe.draw(context);
       }
@@ -66,7 +71,7 @@ function populate (organisms, population, width, height) {
   }
 
   for (let i = 0; i < (Math.floor(fauna * 0.3)); i++) {
-        let name = randomName()
+    let name = randomName()
 
     let x = randomWidth(width)
     let y = randomHeight(height);
@@ -77,9 +82,11 @@ function populate (organisms, population, width, height) {
   }
   
   for (let i = 0; i < flora; i++) {
-    let pos = randomVector(width, height);
+    let name = randomName()
+    let x = randomWidth(width)
+    let y = randomHeight(height);
 
-    organisms.push(new Flora(pos));
+    organisms.push(new Flora(name, x, y));
   }
 
   return organisms
@@ -140,12 +147,16 @@ class Organism {
       context.arc(0, 0, params.radius, 0, Math.PI * 2);
       context.fill();
     } else if (type === 'carnivore') {
-      context.rect(0, 0, params.radius, params.radius);
+      context.rect(0, 0, params.radius + 20, params.radius);
       context.fillStyle = 'red'
       context.fill();
     } else if (type === 'herbivore') {
       context.arc(0, 0, params.radius, 0, Math.PI * 2);
-      context.fillStyle = 'green'
+      context.fillStyle = '#90ee90'
+      context.fill();
+    } else if (type === 'flora') {
+      context.rect(0, 0, params.radius - 3, params.radius - 3);
+      context.fillStyle = '#006400'
       context.fill();
     }
     
@@ -196,11 +207,17 @@ class Carnivore extends Fauna {
 }
 
 class Flora extends Organism {
-  constructor(name, pos) {
-    super(pos, pos);
+  constructor(name, x, y) {
+    super(x, y);
     this.vel = new Vector(0, 0)
     this.name = name;
   }
+
+  update() {
+    this.pos.x;
+    this.pos.y;
+  }
+
 }
 
 class Funga extends Organism {
