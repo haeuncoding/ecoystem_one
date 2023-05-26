@@ -101,6 +101,8 @@ const createPane = () => {
 
 createPane();
 
+// canvas util
+
 function randomWidth (width) {
   return random.range(0, width);
 }
