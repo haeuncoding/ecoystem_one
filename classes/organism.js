@@ -1,7 +1,11 @@
+const Vector = require('./vector');
+const random = require('canvas-sketch-util/random');
+const selfUtil = require('../self_util/self_util')
 class Organism {
-  constructor(x, y) {
+  constructor(x, y, params) {
     this.pos = new Vector(x, y);
     this.vel = new Vector(random.range(-1, 1), random.range(-1, 1));
+    this.params = params;
   }
 
   bounce(width, height) {
@@ -20,18 +24,18 @@ class Organism {
     context.lineWidth = 1;
     context.beginPath();
     if (type === 'general') {
-      context.arc(0, 0, params.radius, 0, Math.PI * 2);
+      context.arc(0, 0, this.params.radius, 0, Math.PI * 2);
       context.fill();
     } else if (type === 'carnivore') {
-      context.rect(0, 0, params.radius + 20, params.radius);
+      context.rect(0, 0, this.params.radius + 20, this.params.radius);
       context.fillStyle = 'red'
       context.fill();
     } else if (type === 'herbivore') {
-      context.arc(0, 0, params.radius, 0, Math.PI * 2);
+      context.arc(0, 0, this.params.radius, 0, Math.PI * 2);
       context.fillStyle = '#90ee90'
       context.fill();
     } else if (type === 'flora') {
-      context.rect(0, 0, params.radius - 3, params.radius - 3);
+      context.rect(0, 0, this.params.radius - 3, this.params.radius - 3);
       context.fillStyle = '#006400'
       context.fill();
     }
@@ -41,4 +45,4 @@ class Organism {
   }
 }
 
-module.exports = {ParentClass: Organism}
+module.exports = Organism;

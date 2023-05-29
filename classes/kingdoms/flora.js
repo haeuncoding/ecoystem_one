@@ -1,9 +1,8 @@
-const organism = require('../organism')
-
-export class Flora extends organism.ParentClass {
-  constructor(name, x, y) {
-    super(x, y);
-    this.vel = new Vector(0, 0)
+const Organism = require('../organism')
+const Vector = require('../vector')
+export class Flora extends Organism {
+  constructor(x, y, params, name) {
+    super(x, y, params);
     this.name = name;
   }
 
@@ -11,5 +10,6 @@ export class Flora extends organism.ParentClass {
     this.pos.x;
     this.pos.y;
   }
-
 }
+
+module.exports = Flora;

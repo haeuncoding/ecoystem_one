@@ -1,17 +1,18 @@
-const organism = require('../organism')
-
-class Fauna extends organism.ParentClass {
-  constructor(x, y) {
-    super(x, y)
-    this.sex = randomSex();
+const Organism = require('../organism')
+const selfUtil = require('../../self_util/self_util')
+class Fauna extends Organism {
+  constructor(x, y, params) {
+    super(x, y, params)
+    this.sex = selfUtil.randomSex();
     this.hunger = 100;
   }
 
   getHungry () {
-    if (updateTime()) {
-      this.hunger -= 0.02
+    // if (updateTime()) {
+  if (typeof('i') === 'string') {
+    this.hunger -= 0.02
     }
   }
 }
 
-module.exports = {ParentClass: Fauna}
+module.exports = Fauna

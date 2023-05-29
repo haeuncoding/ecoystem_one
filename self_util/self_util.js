@@ -1,5 +1,11 @@
 // canvas util
 
+const randomWords = require('random-words')
+const random = require('canvas-sketch-util/random');
+const math = require('canvas-sketch-util/math');
+
+const Vector = require('../classes/vector')
+
 export function randomWidth (width) {
   return random.range(0, width);
 }
@@ -14,6 +20,20 @@ export function randomVector (width, height) {
   return new Vector(x, y)
 }
 
-export const randomName = () => {
-  return randomWords({exactly: 1})
+export function randomName () {
+  let arr = randomWords({exactly: 1})
+  return arr[0];
+}
+
+export function randomSex () {
+  let coin = Math.floor(Math.random * (2))
+  if (coin < 0.5) {
+      return 'M'
+    } else {
+      return 'F'
+    };
+  }
+
+export const collide = (org1, org2) => {
+  return org1.pos === org2.pos;
 }

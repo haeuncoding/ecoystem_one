@@ -1,8 +1,10 @@
-const fauna = require('../fauna')
+const Fauna = require('../fauna')
 
-export class Carnivore extends fauna.ParentClass {
-  constructor(name, x, y, sex) {
-    super(x, y, sex)
+class Carnivore extends Fauna {
+  constructor(x, y, params, name) {
+    super(x, y, params)
     this.name = name;
   }
 }
+
+module.exports = Carnivore;
