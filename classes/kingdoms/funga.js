@@ -1,3 +1,5 @@
+const Organism = require('../organism')
+
 class Funga extends Organism {
   constructor(name) {
     super(pos);

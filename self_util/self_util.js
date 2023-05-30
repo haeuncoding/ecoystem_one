@@ -3,6 +3,9 @@
 const randomWords = require('random-words')
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math');
+ 
+let time;
+let totalTime
 
 const Vector = require('../classes/vector')
 
@@ -36,4 +39,26 @@ export function randomSex () {
 
 export const collide = (org1, org2) => {
   return org1.pos === org2.pos;
+}
+
+export const startTime = () => {
+  time = new Date;
+  time = time.getSeconds();
+  return time; 
+}
+
+export const currentTime = () => {
+  return Date.now()
+}
+
+export const returnTimeElapsed = () => {
+  let currentSecs = new Date()
+  console.log(currentSecs)
+  let current = currentSecs.getSeconds() - time;
+  return current;
+}
+
+export const isDay = () => {
+  if (time % 60 === 0) return true;
+  return false;
 }

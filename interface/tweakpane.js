@@ -5,7 +5,7 @@ class Tweakpane {
     this.pane = new TP.Pane();
     this.params = {
       population: 300,
-      radius: 8
+      radius: 20
     }
   }
 
