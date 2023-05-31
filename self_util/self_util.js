@@ -42,7 +42,7 @@ export const collide = (org1, org2) => {
 }
 
 export const startTime = () => {
-  time = new Date;
+  time = new Date();
   time = time.getSeconds();
   return time; 
 }
@@ -53,12 +53,11 @@ export const currentTime = () => {
 
 export const returnTimeElapsed = () => {
   let currentSecs = new Date()
-  console.log(currentSecs)
-  let current = currentSecs.getSeconds() - time;
-  return current;
+  return (currentSecs.getSeconds() + 1 );
 }
 
-export const isDay = () => {
-  if (time % 60 === 0) return true;
+export const isDay = (secs) => {
+  console.log(secs)
+  if (secs % 60 === 0) return true;
   return false;
 }

@@ -30,7 +30,12 @@ const sketch = ({context, width, height}) => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
-    console.log(selfUtil.returnTimeElapsed())
+    seconds = selfUtil.returnTimeElapsed()
+    if (selfUtil.isDay(seconds)) {
+      seconds = 0
+      dayCount += 1
+    };
+    console.log(dayCount)
     organisms.update()
   };
 };
